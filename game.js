@@ -16,7 +16,7 @@ function getComputerChoice () {
     }
 }
 
-function getHumanChoice(num) {
+function getHumanChoice() {
     let playerChoice = prompt("Please choose rock, paper, or scissors: ").toLowerCase();
 
 
@@ -33,40 +33,38 @@ function playRound(humanChoice,computerChoice) {
 
     if (humanChoice == computerChoice){
         console.log("Tie! No one wins.");
+        return "draw";
     } else if (humanChoice == "rock" && computerChoice == "paper"){
         console.log(`Human chose: ${humanChoice}`);
         console.log(`Computer chose: ${computerChoice}`);
         console.log("Computer wins!");
-        computerScore++;
+        return "computerwin";
     } else if (humanChoice == "rock" && computerChoice == "scissors"){
         console.log(`Human chose: ${humanChoice}`);
         console.log(`Computer chose: ${computerChoice}`);
         console.log("Human wins!");
-        humanScore++;
+        return "humanwin";
     }else if (humanChoice == "paper" && computerChoice == "rock"){
         console.log(`Human chose: ${humanChoice}`);
         console.log(`Computer chose: ${computerChoice}`);
         console.log("Human wins!");
-        humanScore++;
+        return "humanwin";
     } else if (humanChoice == "paper" && computerChoice == "scissors"){
         console.log(`Human chose: ${humanChoice}`);
         console.log(`Computer chose: ${computerChoice}`);
         console.log("Computer wins!");
-        computerScore++;
+        return "computerwin";
     } else if (humanChoice == "scissors" && computerChoice == "rock"){
         console.log(`Human chose: ${humanChoice}`);
         console.log(`Computer chose: ${computerChoice}`);
         console.log("Computer wins!");
-        computerScore++;
+        return "computerwin";
     } else if (humanChoice == "scissors" && computerChoice == "paper"){
         console.log(`Human chose: ${humanChoice}`);
         console.log(`Computer chose: ${computerChoice}`);
         console.log("Human wins!");
-        humanScore++;
+        return "humanwin";
     }
-
-    console.log(`Human Score: ${humanScore}`);
-    console.log(`Computer Score: ${computerScore}`);
 }
 
 
@@ -74,13 +72,23 @@ function playGame(rounds){
     let count = 0;
     let humanScore = 0;
     let computerScore = 0;
-    while (count <= rounds)
-    {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        count++;
+
+    //play until reached number of rounds
+    while (count <= rounds){
+        const player = getHumanChoice();
+        const computer = getComputerChoice();
+
+        let winner = playRound(player, computer);
+
+        if (winner == "humanwin"){
+            humanScore++;
+        }
+        else {
+            computerScore++;
+        }
     }
+    console.log(`Human score: ${humanScore}`);
+    console.log(`Computer score: ${computerScore}`);
 }
 
 const numRounds = 5;
