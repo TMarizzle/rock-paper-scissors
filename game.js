@@ -32,52 +32,30 @@ function playRound(humanChoice,computerChoice) {
     //play game here
 
     if (humanChoice == computerChoice){
-        console.log("Tie! No one wins.");
         return "draw";
     } else if (humanChoice == "rock" && computerChoice == "paper"){
-        console.log(`Human chose: ${humanChoice}`);
-        console.log(`Computer chose: ${computerChoice}`);
-        console.log("Computer wins!");
         return "computerwin";
     } else if (humanChoice == "rock" && computerChoice == "scissors"){
-        console.log(`Human chose: ${humanChoice}`);
-        console.log(`Computer chose: ${computerChoice}`);
-        console.log("Human wins!");
         return "humanwin";
     }else if (humanChoice == "paper" && computerChoice == "rock"){
-        console.log(`Human chose: ${humanChoice}`);
-        console.log(`Computer chose: ${computerChoice}`);
-        console.log("Human wins!");
         return "humanwin";
     } else if (humanChoice == "paper" && computerChoice == "scissors"){
-        console.log(`Human chose: ${humanChoice}`);
-        console.log(`Computer chose: ${computerChoice}`);
-        console.log("Computer wins!");
         return "computerwin";
     } else if (humanChoice == "scissors" && computerChoice == "rock"){
-        console.log(`Human chose: ${humanChoice}`);
-        console.log(`Computer chose: ${computerChoice}`);
-        console.log("Computer wins!");
         return "computerwin";
     } else if (humanChoice == "scissors" && computerChoice == "paper"){
-        console.log(`Human chose: ${humanChoice}`);
-        console.log(`Computer chose: ${computerChoice}`);
-        console.log("Human wins!");
         return "humanwin";
     }
 }
-
 
 function playGame(rounds){
     let count = 0;
     let humanScore = 0;
     let computerScore = 0;
-
     //play until reached number of rounds
     while (count < rounds){
         const player = getHumanChoice();
         const computer = getComputerChoice();
-
         let winner = playRound(player, computer);
 
         if (winner == "humanwin"){
@@ -86,8 +64,6 @@ function playGame(rounds){
         else {
             computerScore++;
         }
-
-
         console.log(`Human score: ${humanScore}`);
         console.log(`Computer score: ${computerScore}`);
         count++;
@@ -106,6 +82,4 @@ function playGame(rounds){
 }
 
 const numRounds = 5;
-
 playGame(numRounds);
-console.log("Thanks for playing!");
