@@ -74,7 +74,7 @@ function playGame(rounds){
     let computerScore = 0;
 
     //play until reached number of rounds
-    while (count <= rounds){
+    while (count < rounds){
         const player = getHumanChoice();
         const computer = getComputerChoice();
 
@@ -86,9 +86,23 @@ function playGame(rounds){
         else {
             computerScore++;
         }
+
+
+        console.log(`Human score: ${humanScore}`);
+        console.log(`Computer score: ${computerScore}`);
+        count++;
     }
-    console.log(`Human score: ${humanScore}`);
-    console.log(`Computer score: ${computerScore}`);
+
+    if (humanScore > computerScore){
+        console.log("Human win! Congrats!");
+    } else if (humanScore == computerScore)
+    {
+        console.log("It's a draw! Let's play again.");
+    }
+    else {
+        console.log("Computer wins! Better luck next time.");
+    }
+    
 }
 
 const numRounds = 5;
