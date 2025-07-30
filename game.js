@@ -52,14 +52,22 @@ function playGame(){
     //let count = 0;
     let humanScore = 0;
     let computerScore = 0;
+    let winner = "";
+    let computer = "";
 
     const rockButton = document.querySelector(".rockBtn");
     const paperButton = document.querySelector(".paperBtn");
     const scissorsButton = document.querySelector(".scissorsBtn");
 
     rockButton.addEventListener('click', function () {
-        console.log("Rock");
-        
+        computer = getComputerChoice();
+        winner = playRound("rock", computer);
+        console.log(winner);
+        if (winner == "humanwin") {
+            humanScore++;
+        } else if (winner == "computerwin") {
+            computerScore++;
+        }
     });
     paperButton.addEventListener('click', function () {
         console.log("Paper");
@@ -68,31 +76,34 @@ function playGame(){
         console.log("Scissors");
     });
 
-    while (humanScore <= 5 || computerScore <= 5){
-        const player = getHumanChoice();
-        const computer = getComputerChoice();
-        let winner = playRound(player, computer);
+    console.log(`Human Score: ${humanScore}`);
+    console.log(`Computer Score: ${computerScore}`);
 
-        if (winner == "humanwin"){
-            humanScore++;
-        }
-        else {
-            computerScore++;
-        }
-        console.log(`Human score: ${humanScore}`);
-        console.log(`Computer score: ${computerScore}`);
-        //count++;
-    }
+    // while (humanScore <= 5 || computerScore <= 5){
+    //     const player = getHumanChoice();
+    //     const computer = getComputerChoice();
+    //     let winner = playRound(player, computer);
 
-    if (humanScore > computerScore){
-        console.log("Human win! Congrats!");
-    } else if (humanScore == computerScore)
-    {
-        console.log("It's a draw! Let's play again.");
-    }
-    else {
-        console.log("Computer wins! Better luck next time.");
-    }
+    //     if (winner == "humanwin"){
+    //         humanScore++;
+    //     }
+    //     else {
+    //         computerScore++;
+    //     }
+    //     console.log(`Human score: ${humanScore}`);
+    //     console.log(`Computer score: ${computerScore}`);
+    //     //count++;
+    // }
+
+    // if (humanScore > computerScore){
+    //     console.log("Human win! Congrats!");
+    // } else if (humanScore == computerScore)
+    // {
+    //     console.log("It's a draw! Let's play again.");
+    // }
+    // else {
+    //     console.log("Computer wins! Better luck next time.");
+    // }
     
 }
 //const numRounds = 5;
