@@ -16,17 +16,17 @@ function getComputerChoice () {
     }
 }
 
-function getHumanChoice() {
-    let playerChoice = prompt("Please choose rock, paper, or scissors: ").toLowerCase();
+// function getHumanChoice() {
+//     let playerChoice = prompt("Please choose rock, paper, or scissors: ").toLowerCase();
 
 
-    if (playerChoice == "rock" || playerChoice == "paper" || playerChoice == "scissors"){
-        return playerChoice;
-    }
-    else {
-        console.log("Invalid response. Please try again.");
-    }
-}
+//     if (playerChoice == "rock" || playerChoice == "paper" || playerChoice == "scissors"){
+//         return playerChoice;
+//     }
+//     else {
+//         console.log("Invalid response. Please try again.");
+//     }
+// }
 
 function playRound(humanChoice,computerChoice) {
     //play game here
@@ -48,12 +48,27 @@ function playRound(humanChoice,computerChoice) {
     }
 }
 
-function playGame(rounds){
-    let count = 0;
+function playGame(){
+    //let count = 0;
     let humanScore = 0;
     let computerScore = 0;
-    //play until reached number of rounds
-    while (count < rounds){
+
+    const rockButton = document.querySelector(".rockBtn");
+    const paperButton = document.querySelector(".paperBtn");
+    const scissorsButton = document.querySelector(".scissorsBtn");
+
+    rockButton.addEventListener('click', function () {
+        console.log("Rock");
+        
+    });
+    paperButton.addEventListener('click', function () {
+        console.log("Paper");
+    });
+    scissorsButton.addEventListener('click', function () {
+        console.log("Scissors");
+    });
+
+    while (humanScore <= 5 || computerScore <= 5){
         const player = getHumanChoice();
         const computer = getComputerChoice();
         let winner = playRound(player, computer);
@@ -66,7 +81,7 @@ function playGame(rounds){
         }
         console.log(`Human score: ${humanScore}`);
         console.log(`Computer score: ${computerScore}`);
-        count++;
+        //count++;
     }
 
     if (humanScore > computerScore){
@@ -80,6 +95,6 @@ function playGame(rounds){
     }
     
 }
-
-const numRounds = 5;
-playGame(numRounds);
+//const numRounds = 5;
+//playGame(numRounds);
+playGame();
